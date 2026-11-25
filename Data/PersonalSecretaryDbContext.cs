@@ -50,38 +50,38 @@ public class PersonalSecretaryDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // Map Schemas
-        modelBuilder.Entity<AuthUser>().ToTable("users", "auth");
-        modelBuilder.Entity<AuthRole>().ToTable("roles", "auth");
+        // Map Schemas & Primary Keys
+        modelBuilder.Entity<AuthUser>().ToTable("users", "auth").HasKey(e => e.user_id);
+        modelBuilder.Entity<AuthRole>().ToTable("roles", "auth").HasKey(e => e.role_id);
 
-        modelBuilder.Entity<Conversation>().ToTable("conversations", "assistant");
-        modelBuilder.Entity<Message>().ToTable("messages", "assistant");
-        modelBuilder.Entity<VoiceProfile>().ToTable("voice_profiles", "assistant");
-        modelBuilder.Entity<VoicePreference>().ToTable("voice_preferences", "assistant");
-        modelBuilder.Entity<VoiceTranscript>().ToTable("voice_transcripts", "assistant");
-        modelBuilder.Entity<VoiceSessionEvent>().ToTable("voice_session_events", "assistant");
-        modelBuilder.Entity<AiActionRequest>().ToTable("ai_action_requests", "assistant");
-        modelBuilder.Entity<AiActionExecution>().ToTable("ai_action_executions", "assistant");
-        modelBuilder.Entity<AiUsageLog>().ToTable("ai_usage_logs", "assistant");
+        modelBuilder.Entity<Conversation>().ToTable("conversations", "assistant").HasKey(e => e.conversation_id);
+        modelBuilder.Entity<Message>().ToTable("messages", "assistant").HasKey(e => e.message_id);
+        modelBuilder.Entity<VoiceProfile>().ToTable("voice_profiles", "assistant").HasKey(e => e.voice_profile_id);
+        modelBuilder.Entity<VoicePreference>().ToTable("voice_preferences", "assistant").HasKey(e => e.preference_id);
+        modelBuilder.Entity<VoiceTranscript>().ToTable("voice_transcripts", "assistant").HasKey(e => e.transcript_id);
+        modelBuilder.Entity<VoiceSessionEvent>().ToTable("voice_session_events", "assistant").HasKey(e => e.event_id);
+        modelBuilder.Entity<AiActionRequest>().ToTable("ai_action_requests", "assistant").HasKey(e => e.action_request_id);
+        modelBuilder.Entity<AiActionExecution>().ToTable("ai_action_executions", "assistant").HasKey(e => e.execution_id);
+        modelBuilder.Entity<AiUsageLog>().ToTable("ai_usage_logs", "assistant").HasKey(e => e.usage_id);
 
-        modelBuilder.Entity<Employee>().ToTable("employees", "profession");
-        modelBuilder.Entity<ProfessionProject>().ToTable("projects", "profession");
-        modelBuilder.Entity<ProfessionTask>().ToTable("tasks", "profession");
-        modelBuilder.Entity<Attendance>().ToTable("attendance", "profession");
-        modelBuilder.Entity<DailyReport>().ToTable("daily_reports", "profession");
+        modelBuilder.Entity<Employee>().ToTable("employees", "profession").HasKey(e => e.employee_id);
+        modelBuilder.Entity<ProfessionProject>().ToTable("projects", "profession").HasKey(e => e.project_id);
+        modelBuilder.Entity<ProfessionTask>().ToTable("tasks", "profession").HasKey(e => e.task_id);
+        modelBuilder.Entity<Attendance>().ToTable("attendance", "profession").HasKey(e => e.attendance_id);
+        modelBuilder.Entity<DailyReport>().ToTable("daily_reports", "profession").HasKey(e => e.report_id);
 
-        modelBuilder.Entity<BusinessEntity>().ToTable("businesses", "business");
-        modelBuilder.Entity<Customer>().ToTable("customers", "business");
-        modelBuilder.Entity<BusinessTransaction>().ToTable("transactions", "business");
-        modelBuilder.Entity<Receivable>().ToTable("receivables", "business");
-        modelBuilder.Entity<Vehicle>().ToTable("vehicles", "business");
+        modelBuilder.Entity<BusinessEntity>().ToTable("businesses", "business").HasKey(e => e.business_id);
+        modelBuilder.Entity<Customer>().ToTable("customers", "business").HasKey(e => e.customer_id);
+        modelBuilder.Entity<BusinessTransaction>().ToTable("transactions", "business").HasKey(e => e.transaction_id);
+        modelBuilder.Entity<Receivable>().ToTable("receivables", "business").HasKey(e => e.receivable_id);
+        modelBuilder.Entity<Vehicle>().ToTable("vehicles", "business").HasKey(e => e.vehicle_id);
 
-        modelBuilder.Entity<HabitProfile>().ToTable("profiles", "habit");
-        modelBuilder.Entity<HabitItem>().ToTable("habits", "habit");
-        modelBuilder.Entity<HabitLog>().ToTable("habit_logs", "habit");
-        modelBuilder.Entity<WaterLog>().ToTable("water_logs", "habit");
-        modelBuilder.Entity<SleepLog>().ToTable("sleep_logs", "habit");
-        modelBuilder.Entity<HabitExpense>().ToTable("expenses", "habit");
+        modelBuilder.Entity<HabitProfile>().ToTable("profiles", "habit").HasKey(e => e.profile_id);
+        modelBuilder.Entity<HabitItem>().ToTable("habits", "habit").HasKey(e => e.habit_id);
+        modelBuilder.Entity<HabitLog>().ToTable("habit_logs", "habit").HasKey(e => e.habit_log_id);
+        modelBuilder.Entity<WaterLog>().ToTable("water_logs", "habit").HasKey(e => e.water_log_id);
+        modelBuilder.Entity<SleepLog>().ToTable("sleep_logs", "habit").HasKey(e => e.sleep_log_id);
+        modelBuilder.Entity<HabitExpense>().ToTable("expenses", "habit").HasKey(e => e.expense_id);
     }
 }
 
